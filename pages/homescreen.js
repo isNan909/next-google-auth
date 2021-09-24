@@ -1,10 +1,13 @@
 import { getSession } from 'next-auth/client';
+import styles from '../styles/Home.module.css';
 
 export default function Homescreen({ user }) {
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Dashboard(Protected Route)</h1>
-      <p>Welcome to main dashboard {user.name}</p>
+      <p>
+        Welcome to dashboard: <b>{user.name}</b>
+      </p>
       <p>{user.email}</p>
     </div>
   );
