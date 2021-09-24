@@ -4,6 +4,10 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 export default function Home() {
   const [session, loadingSession] = useSession();
 
+  if (loadingSession) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <Head>
@@ -18,8 +22,6 @@ export default function Home() {
           <button onClick={() => signIn()}>Sign In</button>
         </>
       )}
-
-      {/* {loadingSession && <>Loading session</>} */}
 
       {session && (
         <>
