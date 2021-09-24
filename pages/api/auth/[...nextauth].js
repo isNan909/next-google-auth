@@ -15,13 +15,13 @@ export default NextAuth({
   },
   secret: process.env.SECRET,
   callbacks: {
-    async jwt(token, user, account, profile, isNewUser) {
+    async jwt(token, account) {
       if (account?.accessToken) {
         token.accessToken = account.accessToken;
       }
       return token;
     },
-    redirect: async (url, baseUrl) => {
+    redirect: async (url, _baseUrl) => {
       if (url === '/profile') {
         return Promise.resolve('/');
       }
