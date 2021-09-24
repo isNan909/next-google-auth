@@ -1,17 +1,11 @@
 import { getSession } from 'next-auth/client';
-import { useSession } from 'next-auth/client';
 
-export default function Homescreen() {
-  const [session, loading] = useSession();
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
+export default function Homescreen({ user }) {
   return (
     <div>
       <h1>Dashboard(Protected Route)</h1>
-      <p>Welcome to main dashboard {session.user.name}</p>
+      <p>Welcome to main dashboard {user.name}</p>
+      <p>{user.email}</p>
     </div>
   );
 }
